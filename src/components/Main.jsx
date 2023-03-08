@@ -12,7 +12,7 @@ const Main = () => {
 
     useEffect(()=>{
         displayPosts();
-    }, []);
+    });
 
     return(
         <div id="main">
