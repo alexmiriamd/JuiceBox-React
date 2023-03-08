@@ -13,7 +13,8 @@ const Posts = (props) => {
                         <div id = "singlePost" key={idx}>
                             <h3 id = "postAuthor"> {post.author.name}</h3>
                             <h2 id = "postTitle" > {post.title} </h2>
-                            <h4 id = "postContent"> {post.content} {post.tags.name}</h4>
+                            <h4 id = "postContent"> {post.content} </h4>
+                            <p id= "tags"> {post.tags.name} </p>
                         </div>    
                     )
                 })

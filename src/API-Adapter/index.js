@@ -15,3 +15,4 @@ export const getPosts = async () => {           //GET all posts
         console.error(error);
     }
 };
+
