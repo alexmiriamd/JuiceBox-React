@@ -5,7 +5,6 @@ const Posts = (props) => {
     const setPosts = props.setPosts;
 
     return (
-        console.log(posts),
         <div id = "allPosts">
             {
                 posts.map((post, idx) => {

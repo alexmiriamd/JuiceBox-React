@@ -2,12 +2,10 @@ const BASE_URL = "https://juicebox-6o9q.onrender.com/api";
 
 export const getPosts = async () => {           //GET all posts
     try{
-        const response = await fetch(`${BASE_URL}/posts`, {
-            headers: {
-                Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFsYmVydCIsImlkIjoxLCJpYXQiOjE2NzgxMjczODV9.N7S28JiR-75LeH7eQmnPBQh-TJR-mtpcPxEcL14QfBk",
-                "Content-Type": "application/json"
-            }
-        })
+        const response = await fetch(`${BASE_URL}/posts`,{
+        method: "GET",
+        headers: {"Content-Type": "application/json"},
+     });
         const result = await response.json();
         const postArray = result.posts      //gets just the post array
         return postArray
@@ -16,3 +14,27 @@ export const getPosts = async () => {           //GET all posts
     }
 };
 
+export const postRegisterUser = async (username, password, name, location) => {     //POST (register) new user
+    try{
+        const response = await fetch(`${BASE_URL}/users/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                user: {
+                    username: username,
+                    password: password,
+                    name: name,
+                    location: location
+                },
+            }),
+        });
+
+        const result = await response.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.error(error);
+    }
+};
