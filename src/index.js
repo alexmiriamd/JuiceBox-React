@@ -10,7 +10,8 @@ import {
 import { 
     Main,
     Login,
-    Register
+    Register,
+    CreatePost
 } from "./components";
 
 const container = document.getElementById("app");
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/createpost" element={<CreatePost />} />
         </>
     )
 )

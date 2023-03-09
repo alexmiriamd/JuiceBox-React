@@ -25,7 +25,7 @@ const Main = () => {
 
     useEffect(()=>{
         checkLoggedIn();
-    },[loggedIn])
+    })
 
     return(
         <div id="main">
