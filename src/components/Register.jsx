@@ -12,13 +12,18 @@ const Register = () => {
 
     async function sendRegisterUser(username, password, name, location) {
         try{
-            await postRegisterUser(username, password, name, location);
-            // setUsername("");
-            // setPassword("");
-            // setName("");
-            // setPassword("");
-            // setLocation("");
-            window.localStorage.setItem("userToken", result.token);
+            const result = await postRegisterUser(username, password, name, location);
+            if(result.token){
+                window.localStorage.setItem("username", username);
+                window.localStorage.setItem("userToken", result.token);
+                navigate("/");
+            }
+            setUsername("");
+            setPassword("");
+            setName("");
+            setPassword("");
+            setLocation("");
+            
         } catch (error) {
             console.error(error);
         }
@@ -36,8 +41,8 @@ const Register = () => {
                 onSubmit = {(event) => {
                     event.preventDefault();
                     sendRegisterUser(username, password, name, location);
-                    console.log(username, password, name, location, "this is onsubmit");
-                    // navigate("/login");
+                    console.log(username, password, name, location);
+                    
                 }}
             >
                 <input 
@@ -72,10 +77,6 @@ const Register = () => {
                 onChange = {(event) => {
                     setPassword(event.target.value);
                 }}
-                ></input>
-                <input
-                placeholder="Re-type Password"
-                required
                 ></input>
                 <button type = "submit">
                     Register!

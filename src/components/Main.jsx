@@ -4,6 +4,7 @@ import { getPosts } from "../API-Adapter";
 
 const Main = () => {
     const [posts, setPosts] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(false);
     
     const displayPosts = async () => {
         const allPosts = await getPosts();
@@ -12,11 +13,23 @@ const Main = () => {
 
     useEffect(()=>{
         displayPosts();
-    });
+    }, []);
+
+
+    function checkLoggedIn(){
+        if(window.localStorage.getItem("userToken")){
+          setLoggedIn(true)
+          console.log(loggedIn);
+        }
+    }
+
+    useEffect(()=>{
+        checkLoggedIn();
+    },[loggedIn])
 
     return(
         <div id="main">
-            <Navbar />
+            <Navbar loggedIn = {loggedIn} setLoggedIn = {setLoggedIn}/>
             <Posts posts = {posts} setPosts = {setPosts}/> 
         </div>
     )
