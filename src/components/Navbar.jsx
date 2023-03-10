@@ -13,12 +13,17 @@ const Navbar = (props) => {
 
   return (
     <div id="navbar">
-      <h2> juiceboxlr </h2>
+      <Link id = "siteName" to = {"/"}>
+        <h2> juiceboxlr </h2>
+      </Link>
       <div id = "nav">
         {loggedIn ? 
         (<>
+          <Link to={"/myposts"}>
+            <h3> My Posts </h3>
+          </Link>
           <Link id = "createPostLink" to = {"/createpost"}>
-          <h3> Create A Post </h3>
+            <h3> Create A Post </h3>
           </Link>
           <button onClick={logOut}>
             Log Out

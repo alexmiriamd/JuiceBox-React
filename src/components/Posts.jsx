@@ -8,9 +8,10 @@ const Posts = (props) => {
         <div id = "allPosts">
             {
                 posts.map((post, idx) => {
+                    console.log(posts)
                     return(
                         <div id = "singlePost" key={idx}>
-                            <h3 id = "postAuthor"> {post.author.name}</h3>
+                            <h3 id = "postAuthor"> {post.author.username}</h3>
                             <h2 id = "postTitle" > {post.title} </h2>
                             <h4 id = "postContent"> {post.content} </h4>
                             <p id= "tags"> {post.tags.name} </p>

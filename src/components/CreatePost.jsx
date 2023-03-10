@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { postCreatePost } from "../API-Adapter";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar"
 
 const CreatePost = () => {
@@ -7,10 +8,16 @@ const CreatePost = () => {
     const [content, setContent] = useState("");
     const [tags, setTags] = useState("");
 
+    const [loggedIn, setLoggedIn] = useState(true);
+
+    const navigate = useNavigate();
+
     const sendNewPost = async (title, content, tags) => {
         try{
-            await postCreatePost(title, content, tags);
-
+            const result = await postCreatePost(title, content, tags);
+            if(result.active){
+                navigate("/myposts");
+            }
         } catch(error){
             console.error(error)
         }
@@ -18,7 +25,7 @@ const CreatePost = () => {
 
     return(
         <div>
-            <Navbar />
+            <Navbar loggedIn = {loggedIn} setLoggedIn = {setLoggedIn} />
             <h1>
                 Write something cool here: 
             </h1>

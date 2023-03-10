@@ -11,7 +11,8 @@ import {
     Main,
     Login,
     Register,
-    CreatePost
+    CreatePost,
+    MyPosts
 } from "./components";
 
 const container = document.getElementById("app");
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/createpost" element={<CreatePost />} />
+            <Route path="/myposts" element={<MyPosts />} />
         </>
     )
 )
