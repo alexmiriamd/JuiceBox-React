@@ -38,6 +38,28 @@ export const postCreatePost = async (title, content, tags) => {     //POST a new
     }
 };
 
+export const patchPosts = async (postId, title, content, tags) => {         //update post
+    try{
+        const response = await fetch(`${BASE_URL}/:${postId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`
+            },
+            body: JSON.stringify({
+                title: title,
+                content: content,
+                tags: tags
+            }),
+        });
+        const result = await response.json();
+        console.log(result);
+        return result
+    } catch(error){
+        console.error(error);
+    }
+}
+
 //requests for /users
 
 export const postRegisterUser = async (username, password, name, location) => {     //POST (register) new user

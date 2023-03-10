@@ -27,6 +27,14 @@ const MyPosts = () => {
                             <h2 id = "postTitle" > {post.title} </h2>
                             <h4 id = "postContent"> {post.content} </h4>
                             <p id= "tags"> {post.tags.name} </p>
+                            <div className="postButtons">
+                                <button id="updateButton">
+                                    <h3> Update </h3>
+                                </button>
+                                <button id="updateButton">
+                                    <h3> Delete</h3>
+                                </button>
+                            </div>    
                         </div>    
                     )}
                 })

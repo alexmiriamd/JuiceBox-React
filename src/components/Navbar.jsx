@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
   const loggedIn = props.loggedIn;
   
+  const navigate = useNavigate();
+
   const logOut = () => {
     window.localStorage.removeItem("userToken");
     window.localStorage.removeItem("username");
     console.log("you logged out");
+    navigate("/");
     window.location.reload(true);
   }
 
@@ -25,8 +28,8 @@ const Navbar = (props) => {
           <Link id = "createPostLink" to = {"/createpost"}>
             <h3> Create A Post </h3>
           </Link>
-          <button onClick={logOut}>
-            Log Out
+          <button id = "logoutButton" onClick={logOut}>
+            <h3> Log Out </h3>
           </button>
         </>)
         :
